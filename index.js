@@ -45,8 +45,9 @@ Sql.prototype.send = function send(metrics) {
 };
 
 Sql.prototype.get = function get(options, callback) {
+    options = options || {};
     this.models.metric.findAll({
         where: options.where,
-        include: this.models.value
+        include: options.include
     }).then(callback);
 };
